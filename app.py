@@ -54,14 +54,34 @@ st.header("Converts Plain Text to Sql and retrieves data from database")
 
 question=st.text_input("Input: ",key="input")
 
+st.caption("Disclaimer: The output shown is retrieved from a Student database present in the backend.")
+
 submit=st.button("Ask the question")
 
-# if submit is clicked
+# # if submit is clicked
+# if submit:
+#     response=get_gemini_response(question,prompt)
+#     print(response)
+#     response=read_sql_query(response,"student.db")
+#     st.subheader("Your Generated Response is")
+#     for row in response:
+#         print(row)
+#         st.header(row)
+
+
+# If submit is clicked
 if submit:
-    response=get_gemini_response(question,prompt)
-    print(response)
-    response=read_sql_query(response,"student.db")
-    st.subheader("Your Generated Response is")
-    for row in response:
-        print(row)
-        st.header(row)
+    # Get the generated SQL query
+    generated_sql = get_gemini_response(question, prompt).strip()
+    # Display the generated SQL query in the output field
+    st.text_area("Generated SQL Query: ", value=generated_sql,  disabled=True)
+    
+    # Execute the SQL query
+    try:
+        response = read_sql_query(generated_sql, "student.db")
+        # Display the query results
+        st.subheader("Your Generated Response is")
+        for row in response:
+            st.text(row)
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
