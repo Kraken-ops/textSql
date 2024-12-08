@@ -49,8 +49,8 @@ prompt=[
 
 ## Streamlit App
 
-st.set_page_config(page_title="I can Retrieve Any SQL query")
-st.header("Gemini App To Retrieve SQL Data")
+st.set_page_config(page_title="Retrieves Data from SQL query")
+st.header("Converts Plain Text to Sql and retrieves data from database")
 
 question=st.text_input("Input: ",key="input")
 
@@ -61,7 +61,7 @@ if submit:
     response=get_gemini_response(question,prompt)
     print(response)
     response=read_sql_query(response,"student.db")
-    st.subheader("The REsponse is")
+    st.subheader("Your Generated Response is")
     for row in response:
         print(row)
         st.header(row)
