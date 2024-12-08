@@ -11,3 +11,7 @@ Implemenation
 Below is the actual implementation
 ![Text2Sql](text2sql.jpg)
 
+
+Implementation Taken from AI SQL EDITOR PROJECT
+![DQ SQL EDITOR](image (6).png)
+
