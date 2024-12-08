@@ -13,5 +13,5 @@ Below is the actual implementation
 
 
 Implementation Taken from AI SQL EDITOR PROJECT
-![DQ SQL EDITOR](image (6).png)
+![DQ SQL EDITOR](dqsql.png)
 
